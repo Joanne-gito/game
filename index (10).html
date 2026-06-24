@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<title>GameSir x AliExpress 618 营销活动复盘</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@500;700;800;900&family=DM+Serif+Display:wght@400&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #3CD896;
+  --bg-2: #2DC684;
+  --bg-3: #25B377;
+  --ink: #0F1A5C;
+  --ink-2: #1B2774;
+  --ink-3: #3A4593;
+  --paper: #F1E9D6;
+  --rule: rgba(15,26,92,0.22);
+  --rule-strong: rgba(15,26,92,0.85);
+  --display: 'Bodoni Moda', serif;
+  --sans: 'Manrope', sans-serif;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { background: #0a0a0a; color: var(--ink); font-family: var(--sans); }
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ===== COVER ===== */
+.cover {
+  min-height: 100vh; background: var(--bg); display: flex; flex-direction: column;
+  justify-content: center; align-items: center; text-align: center; padding: 60px 40px;
+  position: relative; overflow: hidden;
+}
+.cover::before {
+  content:''; position:absolute; top:-30%; right:-15%; width:700px; height:700px;
+  background: radial-gradient(circle, rgba(15,26,92,0.08) 0%, transparent 70%); border-radius:50%;
+}
+.cover::after {
+  content:''; position:absolute; bottom:-20%; left:-10%; width:500px; height:500px;
+  background: radial-gradient(circle, rgba(241,233,214,0.15) 0%, transparent 70%); border-radius:50%;
+}
+.cover-inner { position:relative; z-index:1; }
+.cover-kicker {
+  font-family: var(--sans); font-weight:800; letter-spacing:0.22em; font-size:15px;
+  color: var(--ink); margin-bottom:28px; text-transform:uppercase;
+}
+.cover-the { font-family:var(--display); font-weight:800; font-size:clamp(36px,5vw,72px); line-height:1; color:var(--ink); margin-bottom:-4px; }
+.cover-big { font-family:var(--display); font-weight:900; font-size:clamp(48px,8vw,140px); line-height:0.92; letter-spacing:-0.015em; color:var(--ink); }
+.cover-ornament { display:flex; align-items:center; justify-content:center; gap:24px; margin:12px 0; }
+.cover-ornament .rule { flex:1; height:18px; position:relative; max-width:200px; }
+.cover-ornament .rule::before, .cover-ornament .rule::after {
+  content:''; position:absolute; left:0; right:0; height:4px; background:var(--ink);
+}
+.cover-ornament .rule::before { top:3px; }
+.cover-ornament .rule::after { bottom:3px; }
+.cover-ornament .of { font-family:var(--display); font-weight:800; font-size:clamp(24px,3vw,52px); color:var(--ink); }
+.cover-sub { font-family:var(--display); font-weight:900; font-size:clamp(28px,4vw,56px); line-height:1.05; color:var(--ink); }
+.cover-credit {
+  margin-top:36px; font-family:var(--sans); font-weight:700; font-size:14px;
+  letter-spacing:0.18em; color:var(--ink-3);
+}
+.cover-meta {
+  position:absolute; bottom:40px; left:40px; right:40px;
+  display:flex; justify-content:space-between; font-weight:700; font-size:13px;
+  letter-spacing:0.1em; color:var(--ink-3);
+}
+
+/* ===== NAVIGATION ===== */
+.nav {
+  position:sticky; top:0; z-index:100; background:var(--ink); color:var(--bg);
+  padding:14px 40px; display:flex; align-items:center; justify-content:space-between;
+  font-weight:700; font-size:13px; letter-spacing:0.1em;
+}
+.nav-links { display:flex; gap:6px; flex-wrap:wrap; }
+.nav-links a {
+  color:var(--bg); text-decoration:none; padding:6px 14px; border-radius:4px;
+  font-size:12px; font-weight:700; letter-spacing:0.06em; transition:all 0.2s;
+  border:2px solid transparent;
+}
+.nav-links a:hover, .nav-links a.active { background:var(--bg); color:var(--ink); }
+
+/* ===== SECTIONS ===== */
+.section { padding:80px 40px; max-width:1200px; margin:0 auto; }
+.section-dark { background:var(--ink); color:var(--bg); }
+.section-paper { background:var(--paper); }
+.section-white { background:#fff; }
+
+/* ===== SECTION HEADER ===== */
+.sec-head { margin-bottom:48px; }
+.sec-eyebrow {
+  font-weight:800; letter-spacing:0.2em; font-size:13px; margin-bottom:12px;
+  text-transform:uppercase;
+}
+.sec-title {
+  font-family:var(--display); font-weight:900; font-size:clamp(36px,5vw,72px);
+  line-height:0.95; letter-spacing:-0.015em; margin-bottom:12px;
+}
+.sec-desc { font-size:16px; line-height:1.6; font-weight:500; opacity:0.7; max-width:600px; }
+.sec-ornament {
+  display:flex; align-items:center; gap:20px; margin:20px 0 0; width:100%; max-width:400px;
+}
+.sec-ornament .lines { flex:1; height:14px; position:relative; }
+.sec-ornament .lines::before, .sec-ornament .lines::after {
+  content:''; position:absolute; left:0; right:0; height:3px; background:currentColor;
+}
+.sec-ornament .lines::before { top:2px; }
+.sec-ornament .lines::after { bottom:2px; }
+.sec-ornament .word { font-family:var(--display); font-weight:800; font-size:0.7em; letter-spacing:0.02em; }
+
+/* ===== KPI CARDS ===== */
+.kpi-row { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px,1fr)); gap:20px; margin:40px 0; }
+.kpi-card {
+  padding:32px 24px; display:flex; flex-direction:column; gap:12px;
+  transition:transform 0.3s cubic-bezier(.22,1,.36,1), box-shadow 0.3s;
+  cursor:default; position:relative; overflow:hidden;
+}
+.kpi-card:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,0.15); }
+.kpi-card.dark { background:var(--ink); color:var(--bg); }
+.kpi-card.paper { background:var(--paper); color:var(--ink); }
+.kpi-card.green { background:var(--bg); color:var(--ink); }
+.kpi-label { font-weight:800; letter-spacing:0.14em; font-size:11px; text-transform:uppercase; }
+.kpi-val { font-family:var(--display); font-weight:900; font-size:clamp(36px,5vw,56px); line-height:0.9; letter-spacing:-0.02em; }
+.kpi-val .u { font-size:0.45em; margin-left:4px; font-weight:800; }
+.kpi-badge {
+  display:inline-block; padding:4px 12px; font-weight:700; letter-spacing:0.06em;
+  font-size:11px; align-self:flex-start;
+}
+.kpi-card.dark .kpi-badge { background:var(--bg); color:var(--ink); }
+.kpi-card.paper .kpi-badge { background:var(--ink); color:var(--bg); }
+.kpi-card.green .kpi-badge { background:var(--ink); color:var(--bg); }
+
+/* ===== DATA TABLE ===== */
+.data-wrap { overflow-x:auto; margin:24px 0; }
+.data-table { width:100%; border-collapse:collapse; font-size:14px; }
+.data-table th {
+  padding:14px 16px; text-align:left; font-weight:800; letter-spacing:0.08em; font-size:11px;
+  text-transform:uppercase; border-bottom:4px solid var(--ink); background:transparent;
+}
+.data-table td { padding:13px 16px; border-bottom:2px solid var(--rule); }
+.data-table .num { font-family:var(--display); font-weight:800; font-size:15px; }
+.data-table .highlight-row { background:rgba(60,216,150,0.12) !important; }
+.data-table .highlight-row td { border-bottom-color:var(--bg-2); }
+.data-table .total-row { background:var(--ink) !important; color:var(--bg); }
+.data-table .total-row td { border-bottom:4px solid var(--bg); font-weight:700; }
+.data-table .total-row .num { color:var(--bg); }
+.data-table tr { transition:background 0.2s; }
+.data-table tbody tr:hover { background:rgba(15,26,92,0.04); }
+.data-table .total-row:hover { background:var(--ink-2) !important; }
+
+/* ===== CHART CONTAINER ===== */
+.chart-box { margin:32px 0; }
+.chart-box img { width:100%; border-radius:8px; }
+.chart-caption { font-size:12px; opacity:0.5; margin-top:8px; font-weight:600; letter-spacing:0.04em; }
+
+/* ===== TWO COL ===== */
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+@media(max-width:768px){ .two-col{grid-template-columns:1fr;} }
+
+/* ===== INFO BOX ===== */
+.info-box {
+  padding:18px 22px; border-left:4px solid var(--ink); margin:20px 0; font-size:14px; line-height:1.6;
+  border-radius:0 6px 6px 0;
+}
+.info-box.green-bg { background:rgba(60,216,150,0.15); border-left-color:var(--bg-2); }
+.info-box.paper-bg { background:rgba(241,233,214,0.4); border-left-color:var(--paper); }
+.info-box.dark-bg { background:rgba(15,26,92,0.08); }
+.info-box strong { font-weight:800; }
+
+/* ===== TAG ===== */
+.tag {
+  display:inline-block; padding:5px 14px; font-weight:700; letter-spacing:0.08em;
+  font-size:11px; border-radius:3px;
+}
+.tag-green { background:var(--bg); color:var(--ink); }
+.tag-ink { background:var(--ink); color:var(--bg); }
+.tag-paper { background:var(--paper); color:var(--ink); }
+.tag-orange { background:#FB8C00; color:#fff; }
+
+/* ===== PLACEHOLDER ===== */
+.placeholder {
+  background:rgba(15,26,92,0.04); border:2px dashed var(--rule); border-radius:8px;
+  padding:36px; text-align:center; color:#999; margin:20px 0; transition:border-color 0.3s;
+}
+.placeholder:hover { border-color:var(--ink-3); }
+.placeholder-icon { font-size:32px; margin-bottom:8px; }
+.placeholder-text { font-size:14px; font-weight:600; }
+.placeholder-hint { font-size:12px; color:#bbb; margin-top:6px; }
+
+/* ===== MEDIA GRID ===== */
+.media-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:20px; margin:24px 0; }
+.media-item { background:var(--ink); border-radius:8px; overflow:hidden; }
+.media-item video { width:100%; display:block; }
+.media-caption { padding:12px 16px; font-size:12px; color:var(--bg); font-weight:700; letter-spacing:0.06em; }
+
+/* ===== CHECKLIST ===== */
+.checklist { list-style:none; }
+.checklist li { padding:10px 0 10px 32px; position:relative; font-size:14px; }
+.checklist li::before {
+  content:''; position:absolute; left:0; top:12px; width:16px; height:16px;
+  border:2px solid var(--rule-strong); border-radius:3px;
+}
+.checklist li.checked::before { background:var(--bg-2); border-color:var(--bg-2); }
+.checklist li.checked::after {
+  content:''; position:absolute; left:5px; top:14px; width:4px; height:8px;
+  border:solid #fff; border-width:0 2px 2px 0; transform:rotate(45deg);
+}
+
+/* ===== HIGHLIGHTS GRID ===== */
+.hl-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; margin:24px 0; }
+.hl-card {
+  padding:28px 24px; border-top:4px solid var(--ink); transition:transform 0.3s;
+}
+.hl-card:hover { transform:translateY(-3px); }
+.hl-card .n {
+  font-family:var(--display); font-weight:900; font-size:48px; line-height:1; margin-bottom:12px;
+}
+.hl-card h4 { font-family:var(--display); font-weight:800; font-size:20px; line-height:1.1; margin-bottom:10px; }
+.hl-card p { font-size:14px; line-height:1.5; font-weight:500; opacity:0.7; }
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align:center; padding:48px 40px; font-size:12px; font-weight:700;
+  letter-spacing:0.12em; color:rgba(255,255,255,0.4); background:#0a0a0a;
+}
+
+/* ===== COUNTER ANIMATION ===== */
+.counter { display:inline-block; }
+
+/* ===== PROGRESS BAR ===== */
+.phase-bar {
+  display:flex; height:8px; border-radius:4px; overflow:hidden; margin:16px 0;
+}
+.phase-bar .seg { transition:width 1s cubic-bezier(.22,1,.36,1); }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .section{padding:48px 20px;}
+  .nav{padding:12px 20px; flex-direction:column; gap:8px;}
+  .nav-links{justify-content:center;}
+  .kpi-row{grid-template-columns:1fr 1fr;}
+  .cover-meta{flex-direction:column;gap:8px;align-items:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div class="cover-inner">
+    <div class="cover-kicker">CONFIDENTIAL · INTERNAL REVIEW</div>
+    <div class="cover-the">GameSir x AliExpress</div>
+    <div class="cover-big">618</div>
+    <div class="cover-ornament">
+      <span class="rule"></span>
+      <span class="of">营销活动</span>
+      <span class="rule"></span>
+    </div>
+    <div class="cover-sub">全链路复盘报告</div>
+    <div class="cover-credit">OVERSEAS KOL MARKETING & BRAND CO-BRANDING CAMPAIGN REVIEW</div>
+  </div>
+  <div class="cover-meta">
+    <span>GAMESir MARKETING TEAM</span>
+    <span>JUNE 2026</span>
+    <span>INTERNAL USE ONLY</span>
+  </div>
+</div>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="nav" id="mainNav">
+  <span style="letter-spacing:0.16em;">GAMESIR 618 REVIEW</span>
+  <div class="nav-links">
+    <a href="#overview">概览</a>
+    <a href="#revenue">营收</a>
+    <a href="#kol">KOL</a>
+    <a href="#offline">线下</a>
+    <a href="#package">费用</a>
+    <a href="#conclusion">结论</a>
+  </div>
+</nav>
+
+<!-- ===== KPI STRIP ===== -->
+<div class="section-dark" style="padding:48px 40px;">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="kpi-row">
+      <div class="kpi-card reveal" style="background:var(--bg);color:var(--ink);">
+        <div class="kpi-label">总 GMV</div>
+        <div class="kpi-val">$148<span class="u">W</span></div>
+        <div class="kpi-badge" style="background:var(--ink);color:var(--bg);">官旗店类目第一</div>
+      </div>
+      <div class="kpi-card reveal reveal-delay-1" style="background:var(--paper);color:var(--ink);">
+        <div class="kpi-label">总销量</div>
+        <div class="kpi-val">3.2<span class="u">W单</span></div>
+        <div class="kpi-badge" style="background:var(--ink);color:var(--bg);">POP 2.5W + 全托管 7K</div>
+      </div>
+      <div class="kpi-card reveal reveal-delay-2" style="background:var(--bg);color:var(--ink);">
+        <div class="kpi-label">支付转化率</div>
+        <div class="kpi-val">5.59<span class="u">%</span></div>
+        <div class="kpi-badge" style="background:var(--ink);color:var(--bg);">高于行业均值</div>
+      </div>
+      <div class="kpi-card reveal reveal-delay-3" style="background:var(--paper);color:var(--ink);">
+        <div class="kpi-label">巴西 GMV 占比</div>
+        <div class="kpi-val">76.8<span class="u">%</span></div>
+        <div class="kpi-badge" style="background:var(--ink);color:var(--bg);">巴西排名第一</div>
+      </div>
+      <div class="kpi-card reveal reveal-delay-4" style="background:var(--bg);color:var(--ink);">
+        <div class="kpi-label">新客支付占比</div>
+        <div class="kpi-val">83.1<span class="u">%</span></div>
+        <div class="kpi-badge" style="background:var(--ink);color:var(--bg);">拉新效果显著</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 1. OVERVIEW ===== -->
+<div class="section section-white" id="overview">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">SECTION 01</div>
+    <h2 class="sec-title">活动概览</h2>
+    <div class="sec-ornament"><span class="lines"></span><span class="word">OVERVIEW</span><span class="lines"></span></div>
+    <p class="sec-desc" style="margin-top:16px;">GameSir x AliExpress 2026 Summer Sale 联合营销背景与策略</p>
+  </div>
+
+  <div class="info-box dark-bg reveal">
+    <strong>活动主题：</strong>GAMING IS WINNING, SHOPPING IS EARNING<br>
+    <strong>核心策略：</strong>车身+地铁广告聚焦对话垂类年轻人群，结合KOL矩阵与AliExpress平台资源，实现品牌声量扩张与销售动能激增的双向突破。
+  </div>
+
+  <h3 style="margin:32px 0 16px;font-family:var(--display);font-weight:800;font-size:22px;" class="reveal">合作资源矩阵</h3>
+  <div class="data-wrap reveal">
+    <table class="data-table">
+      <thead>
+        <tr><th>资源类型</th><th>资源内容</th><th>数量及方案</th><th>预估总曝光</th></tr>
+      </thead>
+      <tbody>
+        <tr><td rowspan="3"><strong>OOH户外广告</strong></td><td>巡游巴士</td><td>1辆 · 4周</td><td class="num">3.4M</td></tr>
+        <tr><td>地铁广告</td><td>2辆地铁 · 26天</td><td class="num">72.8M</td></tr>
+        <tr><td>时钟屏幕</td><td>32面屏幕 · 28天 + videocase</td><td class="num">5.3M</td></tr>
+        <tr><td><strong>社媒达人</strong></td><td>YouTube KOL</td><td>1M+达人4位</td><td class="num">1M</td></tr>
+        <tr class="total-row"><td colspan="3"><strong>TTL 总计</strong></td><td class="num"><strong>82.5M</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box green-bg reveal">
+    <strong>核心目标达成：</strong>官旗店登顶速卖通游戏手柄类目第一，巴西市场GMV贡献占比76.81%，新客支付占比83.07%，拉新效果远超预期。
+  </div>
+</div>
+
+<!-- ===== 2. REVENUE ===== -->
+<div class="section section-paper" id="revenue">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">SECTION 02</div>
+    <h2 class="sec-title">店铺营收数据</h2>
+    <div class="sec-ornament"><span class="lines"></span><span class="word">REVENUE</span><span class="lines"></span></div>
+    <p class="sec-desc" style="margin-top:16px;">速卖通618大促期间官方店与专营店销售表现</p>
+  </div>
+
+  <!-- 总体数据 -->
+  <h3 style="font-family:var(--display);font-weight:800;font-size:22px;margin-bottom:16px;" class="reveal">618大促整体数据</h3>
+  <div class="kpi-row reveal">
+    <div class="kpi-card dark">
+      <div class="kpi-label">总 GMV</div>
+      <div class="kpi-val">$148<span class="u">W</span></div>
+      <div style="font-size:13px;opacity:0.7;">折合人民币 1003W</div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">总销量</div>
+      <div class="kpi-val">3.2<span class="u">W</span></div>
+      <div style="font-size:13px;opacity:0.7;">POP 2.5W / 全托管 7K</div>
+    </div>
+    <div class="kpi-card dark">
+      <div class="kpi-label">支付转化率</div>
+      <div class="kpi-val">5.59<span class="u">%</span></div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label">巴西排名</div>
+      <div class="kpi-val">No.1</div>
+      <div style="font-size:13px;opacity:0.7;">GMV贡献 76.81%</div>
+    </div>
+  </div>
+
+  <!-- 分阶段示例数据 -->
+  <h3 style="font-family:var(--display);font-weight:800;font-size:22px;margin:40px 0 8px;" class="reveal">分阶段数据示例</h3>
+  <p style="font-size:13px;opacity:0.6;margin-bottom:20px;" class="reveal">以下为 5月31日 — 6月10日 官方店+专营店每日明细</p>
+
+  <div class="chart-box reveal">
+    <img src="chart_gmv_trend.png" alt="每日支付金额趋势">
+    <div class="chart-caption">图1：每日支付金额趋势（官方店 vs 专营店）— 6月1日为爆发峰值</div>
+  </div>
+  <div class="chart-box reveal">
+    <img src="chart_orders_trend.png" alt="每日支付件数趋势">
+    <div class="chart-caption">图2：每日支付件数趋势 — 爆发后逐步回归稳定</div>
+  </div>
+
+  <div class="data-wrap reveal">
+    <table class="data-table">
+      <thead>
+        <tr><th>日期</th><th>官方店件数</th><th>官方店GMV</th><th>专营店件数</th><th>专营店GMV</th><th>合计GMV</th></tr>
+      </thead>
+      <tbody>
+        <tr class="highlight-row">
+          <td><strong>06-01 爆发</strong></td>
+          <td class="num">4,647</td>
+          <td class="num">$255,622</td>
+          <td class="num">463</td>
+          <td class="num">$27,999</td>
+          <td class="num" style="font-size:18px;"><strong>$283,621</strong></td>
+        </tr>
+        <tr><td>05-31</td><td class="num">1,823</td><td class="num">$98,671</td><td class="num">114</td><td class="num">$7,574</td><td class="num">$106,245</td></tr>
+        <tr><td>06-02</td><td class="num">2,757</td><td class="num">$151,684</td><td class="num">383</td><td class="num">$24,390</td><td class="num">$176,074</td></tr>
+        <tr><td>06-03</td><td class="num">2,171</td><td class="num">$123,638</td><td class="num">237</td><td class="num">$14,111</td><td class="num">$137,749</td></tr>
+        <tr><td>06-04</td><td class="num">1,662</td><td class="num">$93,050</td><td class="num">438</td><td class="num">$31,746</td><td class="num">$124,796</td></tr>
+        <tr><td>06-05</td><td class="num">1,400</td><td class="num">$77,504</td><td class="num">186</td><td class="num">$12,238</td><td class="num">$89,742</td></tr>
+        <tr><td>06-06</td><td class="num">1,314</td><td class="num">$69,322</td><td class="num">274</td><td class="num">$17,048</td><td class="num">$86,370</td></tr>
+        <tr><td>06-07</td><td class="num">1,474</td><td class="num">$80,882</td><td class="num">263</td><td class="num">$14,760</td><td class="num">$95,642</td></tr>
+        <tr><td>06-08</td><td class="num">1,553</td><td class="num">$83,664</td><td class="num">351</td><td class="num">$21,514</td><td class="num">$105,178</td></tr>
+        <tr><td>06-09</td><td class="num">1,518</td><td class="num">$85,583</td><td class="num">344</td><td class="num">$22,239</td><td class="num">$107,822</td></tr>
+        <tr><td>06-10</td><td class="num">1,372</td><td class="num">$75,056</td><td class="num">341</td><td class="num">$19,982</td><td class="num">$95,038</td></tr>
+        <tr class="total-row">
+          <td><strong>合计</strong></td><td class="num">21,691</td><td class="num">$1,194,676</td><td class="num">3,394</td><td class="num">$213,601</td><td class="num"><strong>$1,408,277</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box dark-bg reveal">
+    <strong>趋势洞察：</strong>6月1日为爆发峰值（GMV $283,621），占11天总量的20.1%。随后呈递减趋势进入稳定期。6月4日专营店出现小高峰（$31,746），可能与特定渠道推广有关。
+  </div>
+
+  <!-- 用户结构 -->
+  <h3 style="font-family:var(--display);font-weight:800;font-size:22px;margin:40px 0 16px;" class="reveal">用户结构分析</h3>
+  <div class="two-col reveal">
+    <div class="chart-box"><img src="chart_customer_ratio.png" alt="新客老客占比"><div class="chart-caption">新客 vs 老客支付占比</div></div>
+    <div class="chart-box"><img src="chart_region_ratio.png" alt="地区占比"><div class="chart-caption">GMV国家/地区贡献占比</div></div>
+  </div>
+
+  <div class="info-box green-bg reveal">
+    <strong>关键发现：</strong><br>
+    1. 新客支付占比高达83.07%，品牌成功触达大量新用户<br>
+    2. 巴西市场GMV贡献76.81%，验证核心市场战略正确性<br>
+    3. 老客复购率仅16.93%，后续需加强用户留存运营
+  </div>
+
+  <div class="placeholder reveal">
+    <div class="placeholder-icon">&#128200;</div>
+    <div class="placeholder-text"><strong>爆款产品 TOP3</strong></div>
+    <div class="placeholder-hint">待补充：618期间销量最高的3款SKU名称、销量、GMV贡献</div>
+  </div>
+</div>
+
+<!-- ===== 3. KOL ===== -->
+<div class="section section-dark" id="kol">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">SECTION 03</div>
+    <h2 class="sec-title" style="color:var(--bg);">KOL合作板块</h2>
+    <div class="sec-ornament" style="color:var(--bg);"><span class="lines"></span><span class="word">KOL</span><span class="lines"></span></div>
+    <p class="sec-desc" style="margin-top:16px;color:var(--bg);opacity:0.6;">自有KOL合作 + AliExpress官方合作KOL 双轨并行</p>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:800;font-size:22px;margin-bottom:16px;color:var(--bg);" class="reveal">3.1 自有KOL合作（内容团队主导）</h3>
+  <div class="info-box reveal" style="background:rgba(60,216,150,0.15);border-left-color:var(--bg);color:var(--bg);">
+    <strong>合作概况：</strong>已出视频KOL 21名，总费用 $5,600 USD（不含运费），整体曝光待统计。
+  </div>
+
+  <div class="kpi-row reveal">
+    <div class="kpi-card" style="background:var(--bg);color:var(--ink);">
+      <div class="kpi-label">合作KOL</div>
+      <div class="kpi-val">21<span class="u">名</span></div>
+      <div style="font-size:13px;opacity:0.7;">已出视频</div>
+    </div>
+    <div class="kpi-card" style="background:var(--paper);color:var(--ink);">
+      <div class="kpi-label">总费用</div>
+      <div class="kpi-val">$5,600</div>
+      <div style="font-size:13px;opacity:0.7;">不含运费</div>
+    </div>
+    <div class="kpi-card" style="background:var(--bg);color:var(--ink);">
+      <div class="kpi-label">单均成本</div>
+      <div class="kpi-val">~$267</div>
+      <div style="font-size:13px;opacity:0.7;">不含运费</div>
+    </div>
+  </div>
+
+  <div class="placeholder reveal" style="border-color:rgba(60,216,150,0.3);">
+    <div class="placeholder-icon" style="color:var(--bg);">&#127909;</div>
+    <div class="placeholder-text" style="color:var(--bg);"><strong>自有KOL合作明细附件</strong></div>
+    <div class="placeholder-hint" style="color:rgba(60,216,150,0.5);">待补充：21名KOL详细数据表（名称/平台/粉丝量/费用/曝光/互动率/视频链接）</div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:800;font-size:22px;margin:40px 0 16px;color:var(--bg);" class="reveal">3.2 AliExpress官方合作KOL（5名）</h3>
+  <div class="info-box reveal" style="background:rgba(251,140,0,0.15);border-left-color:#FB8C00;color:var(--bg);">
+    <strong>费用状态：</strong>与AliExpress合作的5名KOL费用尚未确定，待后续补充。
+  </div>
+
+  <div class="data-wrap reveal">
+    <table class="data-table" style="color:var(--bg);">
+      <thead>
+        <tr style="border-bottom-color:var(--bg);"><th style="color:var(--bg);">#</th><th style="color:var(--bg);">视频链接</th><th style="color:var(--bg);">平台</th><th style="color:var(--bg);">曝光/互动</th><th style="color:var(--bg);">费用</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td><a href="https://www.youtube.com/watch?v=wL7loxxY9bo" target="_blank" style="color:var(--bg);text-decoration:underline;">YouTube视频1</a></td><td>YouTube</td><td>待统计</td><td>待定</td></tr>
+        <tr><td>2</td><td><a href="https://www.youtube.com/watch?v=OKbNXsER3xw&t=3s" target="_blank" style="color:var(--bg);text-decoration:underline;">YouTube视频2</a></td><td>YouTube</td><td>待统计</td><td>待定</td></tr>
+        <tr><td>3</td><td><a href="https://www.youtube.com/watch?v=d6ngtJroz4Y" target="_blank" style="color:var(--bg);text-decoration:underline;">YouTube视频3</a></td><td>YouTube</td><td>待统计</td><td>待定</td></tr>
+        <tr><td>4</td><td><a href="https://www.youtube.com/watch?v=pnO2wE1tNDo" target="_blank" style="color:var(--bg);text-decoration:underline;">YouTube视频4</a></td><td>YouTube</td><td>待统计</td><td>待定</td></tr>
+        <tr><td>5</td><td colspan="4" style="text-align:center;opacity:0.4;">第5个视频链接待补充</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== 4. OFFLINE ===== -->
+<div class="section section-white" id="offline">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">SECTION 04</div>
+    <h2 class="sec-title">品牌联合传播</h2>
+    <div class="sec-ornament"><span class="lines"></span><span class="word">OOH</span><span class="lines"></span></div>
+    <p class="sec-desc" style="margin-top:16px;">巴西圣保罗线下曝光：巡游车 + 地铁 + 时钟屏幕广告</p>
+  </div>
+
+  <div class="info-box dark-bg reveal">
+    <strong>投放市场：</strong>巴西 · 圣保罗<br>
+    <strong>目标人群：</strong>18-44岁年轻群体（地铁乘客占比77%-90%），覆盖大学、商圈、体育场馆等高消费力区域。
+  </div>
+
+  <div class="data-wrap reveal">
+    <table class="data-table">
+      <thead>
+        <tr><th>渠道</th><th>形式</th><th>覆盖区域</th><th>周期</th><th>预估曝光</th><th>费用</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-green">巡游车</span></td>
+          <td>1辆巴士车身广告</td>
+          <td>圣保罗主要大道、大学、公园、世界杯观赛场所</td>
+          <td>4周</td>
+          <td class="num">3.4M</td>
+          <td>待补充</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-ink">地铁</span></td>
+          <td>2辆地铁6节车厢</td>
+          <td>黄线/绿线/蓝线/红线/紫线</td>
+          <td>26天</td>
+          <td class="num">72.8M</td>
+          <td>待补充</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-paper">时钟屏幕</span></td>
+          <td>32面屏幕+videocase</td>
+          <td>Paulista大街等核心商圈</td>
+          <td>4周</td>
+          <td class="num">5.3M</td>
+          <td>待补充</td>
+        </tr>
+        <tr class="total-row"><td colspan="4"><strong>OOH总计</strong></td><td class="num"><strong>81.5M</strong></td><td><strong>待补充</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:800;font-size:22px;margin:32px 0 16px;" class="reveal">线下实拍素材</h3>
+  <div class="media-grid reveal">
+    <div class="media-item">
+      <video controls><source src="../.uploads/367bf8a5-7b82-4bb4-b012-dc2f5c12876d_GameSir-bus.mp4" type="video/mp4"></video>
+      <div class="media-caption">巡游巴士实拍视频</div>
+    </div>
+    <div class="media-item">
+      <video controls><source src="../.uploads/1c68e2cd-c794-489b-8470-ded8d46f5152_Gamesir_subway.mp4" type="video/mp4"></video>
+      <div class="media-caption">地铁广告实拍视频</div>
+    </div>
+  </div>
+
+  <div class="media-grid reveal">
+    <div class="placeholder" style="margin:0;"><div class="placeholder-icon">&#128652;</div><div class="placeholder-text"><strong>巴士实拍照片</strong></div><div class="placeholder-hint">待补充</div></div>
+    <div class="placeholder" style="margin:0;"><div class="placeholder-icon">&#127750;</div><div class="placeholder-text"><strong>街边电子广告牌</strong></div><div class="placeholder-hint">待补充</div></div>
+    <div class="placeholder" style="margin:0;"><div class="placeholder-icon">&#128643;</div><div class="placeholder-text"><strong>地铁广告实拍</strong></div><div class="placeholder-hint">待补充</div></div>
+  </div>
+</div>
+
+<!-- ===== 5. PACKAGE ===== -->
+<div class="section section-paper" id="package">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">SECTION 05</div>
+    <h2 class="sec-title">整体Package与费用</h2>
+    <div class="sec-ornament"><span class="lines"></span><span class="word">BUDGET</span><span class="lines"></span></div>
+  </div>
+
+  <div class="data-wrap reveal">
+    <table class="data-table">
+      <thead>
+        <tr><th>板块</th><th>明细</th><th>费用</th><th>产出</th><th>状态</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>自有KOL</strong></td>
+          <td>21名KOL视频</td>
+          <td class="num">$5,600</td>
+          <td>21条视频</td>
+          <td><span class="tag tag-green">已确认</span></td>
+        </tr>
+        <tr>
+          <td><strong>AE合作KOL</strong></td>
+          <td>5名官方KOL</td>
+          <td class="num">待定</td>
+          <td>5条视频</td>
+          <td><span class="tag tag-orange">待定</span></td>
+        </tr>
+        <tr>
+          <td><strong>品牌联合传播</strong></td>
+          <td>巡游车+地铁+时钟</td>
+          <td class="num">待补充</td>
+          <td>预估81.5M曝光</td>
+          <td><span class="tag tag-orange">待补充</span></td>
+        </tr>
+        <tr>
+          <td><strong>其他</strong></td>
+          <td>物料/应急</td>
+          <td class="num">-</td>
+          <td>-</td>
+          <td><span class="tag tag-ink">待确认</span></td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>总投入</strong></td>
+          <td class="num"><strong>$5,600+</strong></td>
+          <td colspan="2"><strong>总GMV $148W / 总销量 3.2W单</strong></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="info-box dark-bg reveal">
+    <strong>待补充费用项：</strong>AliExpress合作KOL费用 / 线下广告实际费用 / videocase制作费 / 物料费 / 运费
+  </div>
+</div>
+
+<!-- ===== 6. CONCLUSION ===== -->
+<div class="section section-dark" id="conclusion">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">SECTION 06</div>
+    <h2 class="sec-title" style="color:var(--bg);">核心结论</h2>
+    <div class="sec-ornament" style="color:var(--bg);"><span class="lines"></span><span class="word">INSIGHTS</span><span class="lines"></span></div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:800;font-size:22px;margin-bottom:20px;color:var(--bg);" class="reveal">亮点总结</h3>
+  <div class="hl-grid reveal">
+    <div class="hl-card" style="background:var(--bg);color:var(--ink);">
+      <div class="n">01</div>
+      <h4>官旗店登顶类目第一</h4>
+      <p>速卖通游戏手柄类目排名第一，品牌力显著提升</p>
+    </div>
+    <div class="hl-card" style="background:var(--paper);color:var(--ink);">
+      <div class="n">02</div>
+      <h4>巴西市场深耕见效</h4>
+      <p>GMV贡献76.81%，排名第一，验证核心市场战略</p>
+    </div>
+    <div class="hl-card" style="background:var(--bg);color:var(--ink);">
+      <div class="n">03</div>
+      <h4>拉新能力突出</h4>
+      <p>新客支付占比83.07%，品牌成功触达大量新用户</p>
+    </div>
+    <div class="hl-card" style="background:var(--paper);color:var(--ink);">
+      <div class="n">04</div>
+      <h4>转化率表现优异</h4>
+      <p>支付转化率5.59%，高于行业平均水平</p>
+    </div>
+    <div class="hl-card" style="background:var(--bg);color:var(--ink);">
+      <div class="n">05</div>
+      <h4>线下曝光量级大</h4>
+      <p>OOH预估曝光81.5M，地铁广告占主导72.8M</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:800;font-size:22px;margin:40px 0 20px;color:var(--bg);" class="reveal">问题与反思</h3>
+  <div class="hl-grid reveal">
+    <div class="hl-card" style="background:rgba(251,140,0,0.12);color:var(--bg);border-top-color:#FB8C00;">
+      <div class="n" style="color:#FB8C00;">01</div>
+      <h4>老客复购率偏低</h4>
+      <p style="opacity:0.6;">仅16.93%，需加强留存运营与复购激励机制</p>
+    </div>
+    <div class="hl-card" style="background:rgba(251,140,0,0.12);color:var(--bg);border-top-color:#FB8C00;">
+      <div class="n" style="color:#FB8C00;">02</div>
+      <h4>爆发期后递减明显</h4>
+      <p style="opacity:0.6;">返场期策略可更积极，考虑追加KOL内容</p>
+    </div>
+    <div class="hl-card" style="background:rgba(251,140,0,0.12);color:var(--bg);border-top-color:#FB8C00;">
+      <div class="n" style="color:#FB8C00;">03</div>
+      <h4>费用统计不完整</h4>
+      <p style="opacity:0.6;">需建立活动费用追踪SOP，实时记录各板块支出</p>
+    </div>
+    <div class="hl-card" style="background:rgba(251,140,0,0.12);color:var(--bg);border-top-color:#FB8C00;">
+      <div class="n" style="color:#FB8C00;">04</div>
+      <h4>KOL数据归因不精细</h4>
+      <p style="opacity:0.6;">建议配置专属折扣码/追踪链接，精准归因</p>
+    </div>
+    <div class="hl-card" style="background:rgba(251,140,0,0.12);color:var(--bg);border-top-color:#FB8C00;">
+      <div class="n" style="color:#FB8C00;">05</div>
+      <h4>其他地区占比小</h4>
+      <p style="opacity:0.6;">巴西之外市场有待开拓，可考虑欧洲或北美</p>
+    </div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:800;font-size:22px;margin:40px 0 20px;color:var(--bg);" class="reveal">下次活动建议</h3>
+  <div class="info-box reveal" style="background:rgba(60,216,150,0.12);border-left-color:var(--bg);color:var(--bg);">
+    <strong>1. 预算分配优化：</strong>地铁广告曝光效率最高（72.8M），可增加占比；自有KOL单均成本仅$267，性价比极高，可扩大规模。<br><br>
+    <strong>2. 市场拓展：</strong>巩固巴西的同时，复制成功模式至墨西哥、哥伦比亚等拉美市场。<br><br>
+    <strong>3. 内容策略：</strong>AliExpress官方KOL合作模式值得延续，需提前锁定费用与排期。<br><br>
+    <strong>4. 数据追踪：</strong>建立统一数据看板，实现KOL曝光→店铺流量→订单转化的全链路追踪。
+  </div>
+</div>
+
+<!-- ===== 7. APPENDIX ===== -->
+<div class="section section-white" id="appendix">
+  <div class="sec-head reveal">
+    <div class="sec-eyebrow">SECTION 07</div>
+    <h2 class="sec-title">附录</h2>
+    <div class="sec-ornament"><span class="lines"></span><span class="word">APPENDIX</span><span class="lines"></span></div>
+  </div>
+
+  <h3 style="font-family:var(--display);font-weight:800;font-size:22px;margin-bottom:16px;" class="reveal">待补充素材清单</h3>
+  <ul class="checklist reveal">
+    <li class="checked">速卖通分阶段销售数据（截图已提供）</li>
+    <li class="checked">巡游巴士实拍视频（已提供）</li>
+    <li class="checked">地铁广告实拍视频（已提供）</li>
+    <li>巴士街头实拍照片</li>
+    <li>街边电子广告牌/时钟屏幕实拍照片</li>
+    <li>地铁车厢内/站台广告实拍照片</li>
+    <li>自有KOL合作明细表（21名KOL数据）</li>
+    <li>AliExpress合作5名KOL的费用确认</li>
+    <li>线下广告投放的实际费用</li>
+    <li>爆款产品TOP3数据</li>
+    <li>分渠道销量数据（KOL引流/自然/广告）</li>
+    <li>Google Trends品牌词搜索趋势截图</li>
+  </ul>
+
+  <h3 style="font-family:var(--display);font-weight:800;font-size:22px;margin:28px 0 16px;" class="reveal">相关链接</h3>
+  <div class="data-wrap reveal">
+    <table class="data-table">
+      <thead><tr><th>类型</th><th>链接</th></tr></thead>
+      <tbody>
+        <tr><td>AE合作KOL视频1</td><td><a href="https://www.youtube.com/watch?v=wL7loxxY9bo" target="_blank">youtube.com/watch?v=wL7loxxY9bo</a></td></tr>
+        <tr><td>AE合作KOL视频2</td><td><a href="https://www.youtube.com/watch?v=OKbNXsER3xw&t=3s" target="_blank">youtube.com/watch?v=OKbNXsER3xw</a></td></tr>
+        <tr><td>AE合作KOL视频3</td><td><a href="https://www.youtube.com/watch?v=d6ngtJroz4Y" target="_blank">youtube.com/watch?v=d6ngtJroz4Y</a></td></tr>
+        <tr><td>AE合作KOL视频4</td><td><a href="https://www.youtube.com/watch?v=pnO2wE1tNDo" target="_blank">youtube.com/watch?v=pnO2wE1tNDo</a></td></tr>
+        <tr><td>营销方案PDF</td><td>AE&Gamesir联合营销方案618.pdf</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+  GameSir Marketing Team &nbsp;·&nbsp; 2026年618营销活动复盘 &nbsp;·&nbsp; 内部资料 请勿外传
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Active nav link
+const sections = document.querySelectorAll('[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if(window.scrollY >= s.offsetTop - 120) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if(a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
